@@ -1,0 +1,75 @@
+export const products = [
+    {
+        id: 1,
+        name: "مرتبة الدورا اكسترا جولد 24 سم",
+        price: 4500,
+        image: "/aldora/1.jpeg",
+        badge: "جديد",
+    },
+    {
+        id: 2,
+        name: "مرتبة الدورا الماني قطن 25 سم",
+        price: 3800,
+        image: "/aldora/2.jpeg",
+    },
+    {
+        id: 3,
+        name: "مرتبة الدورا برستيج بوكيت قطن 27 سم",
+        price: 5200,
+        image: "/aldora/3.jpeg",
+    },
+    {
+        id: 4,
+        name: "مرتبة الدورا كتراكت ارتفاع 27 سم",
+        price: 4100,
+        image: "/aldora/4.jpeg",
+    },
+    {
+        id: 5,
+        name: "مرتبة الدورا برستيج ميدي بيديك 28 سم",
+        price: 5500,
+        image: "/aldora/5.jpeg",
+    },
+    {
+        id: 6,
+        name: "مرتبة الدورا برستيج بلوماس 20 سم",
+        price: 3200,
+        image: "/aldora/6.jpeg",
+    },
+    {
+        id: 7,
+        name: "مرتبة الدورا برستيج سكاندي 25 سم",
+        price: 4800,
+        image: "/aldora/7.jpeg",
+    },
+    {
+        id: 8,
+        name: "مرتبة الدورا برستيج بوكيت قطن 30 سم",
+        price: 6000,
+        image: "/aldora/8.jpeg",
+    },
+    {
+        id: 9,
+        name: "مرتبة الدورا برستيج رويالتي 35 سم",
+        price: 7500,
+        image: "/aldora/9.jpeg",
+    },
+    {
+        id: 10,
+        name: "مرتبة الدورا سويت دريمز 24 سم",
+        price: 3900,
+        image: "/aldora/10.jpeg",
+    },
+    {
+        id: 11,
+        name: "مرتبة الدورا ماريوت 17 سم",
+        price: 2800,
+        image: "/aldora/11.jpeg",
+    },
+    {
+        id: 12,
+        name: "مرتبة الدورا كتراكت ارتفاع 31 سم",
+        price: 4600,
+        image: "/aldora/12.jpeg",
+    },
+];
