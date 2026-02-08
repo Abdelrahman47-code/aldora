@@ -177,9 +177,14 @@
 }
 
 /* Mobile Responsiveness */
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
     .product-container {
         padding: 1rem;
+        overflow-x: hidden;
+        /* Prevent horizontal scroll */
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .details-section {
@@ -189,6 +194,8 @@
 
     .main-image-container {
         height: 300px;
+        width: 100%;
+        /* Ensure it fits container */
     }
 
     .product-title {
@@ -202,5 +209,21 @@
     .add-to-cart-btn,
     .whatsapp-btn {
         width: 100%;
+    }
+
+    .similar-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        /* Reduce min width for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .similar-grid {
+        grid-template-columns: 1fr;
+        /* Single column on very small screens */
+    }
+
+    .main-image-container {
+        height: 250px;
     }
 }
