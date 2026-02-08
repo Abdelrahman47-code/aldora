@@ -33,6 +33,7 @@ const styles = {
         margin: '0 auto',
         padding: '2rem',
         minHeight: '60vh',
+        width: '100%', // Ensure full width
     },
     emptyContainer: {
         textAlign: 'center',
@@ -59,8 +60,9 @@ const styles = {
     },
     grid: {
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
         gap: '2rem',
+        width: '100%', // Ensure grid takes full width
     },
 };
 
