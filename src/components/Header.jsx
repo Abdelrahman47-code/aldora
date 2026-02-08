@@ -29,10 +29,10 @@ const Header = () => {
                 </button>
 
                 <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
-                    <a href="#" className="nav-link" onClick={() => setIsMenuOpen(false)}>الرئيسية</a>
-                    <a href="#" className="nav-link" onClick={() => setIsMenuOpen(false)}>المراتب</a>
-                    <a href="#" className="nav-link" onClick={() => setIsMenuOpen(false)}>المفروشات</a>
-                    <a href="#" className="nav-link" onClick={() => setIsMenuOpen(false)}>اتصل بنا</a>
+                    <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>الرئيسية</Link>
+                    <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>المراتب</Link>
+                    <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>المفروشات</Link>
+                    <a href="#footer" className="nav-link" onClick={() => setIsMenuOpen(false)}>اتصل بنا</a>
                 </nav>
 
                 <div className="icons">
