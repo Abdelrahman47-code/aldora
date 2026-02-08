@@ -32,13 +32,21 @@ const Header = () => {
                     <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>المراتب</Link>
                     <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>المفروشات</Link>
                     <a href="#footer" className="nav-link" onClick={() => setIsMenuOpen(false)}>اتصل بنا</a>
+
+                    {/* Mobile Only Menu Items */}
+                    <Link to="/favorites" className="nav-link mobile-only" onClick={() => setIsMenuOpen(false)}>
+                        قائمة الرغبات ❤️
+                    </Link>
+                    <div className="nav-link mobile-only" onClick={() => { setIsMenuOpen(false); alert('تسجيل الدخول سيتوفر قريباً!'); }}>
+                        تسجيل الدخول / التسجيل 👤
+                    </div>
                 </nav>
 
                 <div className="icons">
-                    <button className="icon-btn" onClick={() => alert('خاصية البحث ستتوفر قريباً!')} aria-label="Search">
+                    <button className="icon-btn search-icon" onClick={() => alert('خاصية البحث ستتوفر قريباً!')} aria-label="Search">
                         🔍
                     </button>
-                    <Link to="/favorites" className="icon favorite-icon" style={{ textDecoration: 'none', position: 'relative', marginRight: '15px' }}>
+                    <Link to="/favorites" className="icon favorite-icon desktop-only" style={{ textDecoration: 'none', position: 'relative', marginRight: '15px' }}>
                         ❤️
                         {favorites && favorites.length > 0 && <span className="cart-badge" style={{ backgroundColor: '#D32F2F' }}>{favorites.length}</span>}
                     </Link>
@@ -46,7 +54,7 @@ const Header = () => {
                         🛒
                         {getCartCount() > 0 && <span className="cart-badge">{getCartCount()}</span>}
                     </Link>
-                    <button className="icon-btn" onClick={() => alert('تسجيل الدخول سيتوفر قريباً!')} aria-label="User Profile">
+                    <button className="icon-btn desktop-only" onClick={() => alert('تسجيل الدخول سيتوفر قريباً!')} aria-label="User Profile">
                         👤
                     </button>
                 </div>

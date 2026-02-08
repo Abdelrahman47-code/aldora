@@ -135,14 +135,37 @@
 
 /* Mobile Styles */
 @media (max-width: 768px) {
+    .nav-container {
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* 1. Icons on the Left */
+    .icons {
+        order: 1;
+        gap: 15px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* 2. Logo in the Center */
+    .logo-link {
+        order: 2;
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        /* Absolute position used for centering */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* 3. Hamburger on the Right */
     .hamburger {
         display: flex;
         order: 3;
-        /* Place hamburger on the right (RTL context handled by direction: rtl in body) */
-    }
-
-    .nav-container {
-        padding: 1rem;
     }
 
     .nav {
@@ -166,23 +189,50 @@
     }
 
     .nav-link {
-        padding: 10px 0;
+        padding: 15px 0;
         border-bottom: 1px solid #f0f0f0;
         width: 100%;
-        text-align: center;
+        text-align: right;
+        /* Align text to right for RTL */
+        padding-right: 1rem;
     }
 
     .nav-link:last-child {
         border-bottom: none;
     }
 
-    .icons {
-        /* Keep icons visible or move them? existing design had them on the right */
-        order: 2;
+    .logo-img {
+        height: 30px;
+        /* Slightly smaller for mobile */
     }
 
-    .logo {
-        order: 1;
+    /* Hide Desktop Only items on Mobile */
+    .desktop-only {
+        display: none !important;
+    }
+
+    /* Show Mobile Only items */
+    .mobile-only {
+        display: block;
+    }
+
+    .cart-badge {
+        width: 16px;
+        height: 16px;
+        font-size: 0.7rem;
+        top: -5px;
+        right: -5px;
+    }
+}
+
+/* Utilities for Desktop/Mobile visibility */
+.mobile-only {
+    display: none;
+}
+
+@media (min-width: 769px) {
+    .desktop-only {
+        display: inline-flex;
     }
 }
 
@@ -209,11 +259,7 @@
     object-fit: contain;
 }
 
-@media (max-width: 768px) {
-    .logo-img {
-        height: 35px;
-    }
-}
+
 
 .icon-btn {
     background: none;
@@ -229,23 +275,4 @@
 
 .icon-btn:hover {
     color: var(--color-secondary);
-}
-
-@media (max-width: 768px) {
-    .icons {
-        font-size: 1rem;
-        gap: 10px;
-    }
-
-    .icon-btn {
-        font-size: 1rem;
-    }
-
-    .cart-badge {
-        width: 16px;
-        height: 16px;
-        font-size: 0.7rem;
-        top: -6px;
-        right: -6px;
-    }
 }
