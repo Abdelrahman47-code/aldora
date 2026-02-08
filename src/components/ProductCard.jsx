@@ -87,7 +87,7 @@ const styles = {
         position: 'absolute',
         top: '10px',
         left: '10px',
-        backgroundColor: '#1a237e', // Dark blue like image
+        backgroundColor: '#D32F2F', // Red
         color: '#fff',
         width: '50px',
         height: '50px',

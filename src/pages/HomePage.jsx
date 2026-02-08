@@ -40,7 +40,7 @@ const HomePage = () => {
                         style={{ ...styles.pageBtn, ...{ cursor: currentPage === 1 ? 'not-allowed' : 'pointer', opacity: currentPage === 1 ? 0.5 : 1 } }}
                         disabled={currentPage === 1}
                     >
-                        &gt;
+                        &lt;
                     </button>
 
                     {pageNumbers.map(number => (
@@ -58,7 +58,7 @@ const HomePage = () => {
                         style={{ ...styles.pageBtn, ...{ cursor: currentPage === pageNumbers.length ? 'not-allowed' : 'pointer', opacity: currentPage === pageNumbers.length ? 0.5 : 1 } }}
                         disabled={currentPage === pageNumbers.length}
                     >
-                        &lt;
+                        &gt;
                     </button>
                 </div>
             )}
@@ -98,6 +98,7 @@ const styles = {
         alignItems: 'center',
         gap: '10px',
         marginTop: '3rem',
+        flexDirection: 'row-reverse', // Ensure logical order matches visual logic if needed, but standard row is fine if arrows are swapped correctly
     },
     pageBtn: {
         padding: '8px 16px',
@@ -111,8 +112,8 @@ const styles = {
     },
     activePageBtn: {
         padding: '8px 16px',
-        border: '1px solid #1a237e', // Use theme color
-        backgroundColor: '#1a237e',
+        border: '1px solid #D32F2F', // Red color
+        backgroundColor: '#D32F2F',
         color: '#fff',
         cursor: 'default',
         fontSize: '1rem',
