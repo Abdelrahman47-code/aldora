@@ -36,12 +36,16 @@ const Header = () => {
                 </nav>
 
                 <div className="icons">
-                    <span className="icon">🔍</span>
+                    <button className="icon-btn" onClick={() => alert('خاصية البحث ستتوفر قريباً!')} aria-label="Search">
+                        🔍
+                    </button>
                     <Link to="/cart" className="icon cart-icon">
                         🛒
                         {getCartCount() > 0 && <span className="cart-badge">{getCartCount()}</span>}
                     </Link>
-                    <span className="icon">👤</span>
+                    <button className="icon-btn" onClick={() => alert('تسجيل الدخول سيتوفر قريباً!')} aria-label="User Profile">
+                        👤
+                    </button>
                 </div>
             </div>
         </header>
