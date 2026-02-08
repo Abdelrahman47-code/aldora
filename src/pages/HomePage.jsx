@@ -98,7 +98,7 @@ const styles = {
         alignItems: 'center',
         gap: '10px',
         marginTop: '3rem',
-        flexDirection: 'row-reverse', // Ensure logical order matches visual logic if needed, but standard row is fine if arrows are swapped correctly
+        direction: 'ltr', // Force LTR to ensure < on left and > on right
     },
     pageBtn: {
         padding: '8px 16px',
