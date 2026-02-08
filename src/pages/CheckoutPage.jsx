@@ -61,8 +61,7 @@ const CheckoutPage = () => {
         message += `*طريقة الدفع:* الدفع عند الاستلام`;
 
         // Redirect to WhatsApp
-        const waNumber = '201234567891'; // Provided by user without leading 0 usually, but 20 is country code
-        // User said: 01234567891. Country code for Egypt is +20. So 201234567891.
+        const waNumber = '201152288233'; // Updated number
         window.open(`https://wa.me/${waNumber}?text=${message}`, '_blank');
 
         // Clear cart and redirect

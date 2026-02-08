@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './Header.css';
+import logo from '../assets/logo.png'; // Assuming user will place image here
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,7 +18,9 @@ const Header = () => {
                 <span>خصومات هائلة لفترة محدودة!</span>
             </div>
             <div className="nav-container">
-                <div className="logo">ALDORA</div>
+                <Link to="/" className="logo-link">
+                    <img src={logo} alt="ALDORA" className="logo-img" />
+                </Link>
 
                 <button className="hamburger" onClick={toggleMenu} aria-label="Toggle menu">
                     <span className={`bar ${isMenuOpen ? 'open' : ''}`}></span>
