@@ -1,4 +1,7 @@
 import React from 'react';
+import facebookIcon from '../assets/facebook.png';
+import instagramIcon from '../assets/instagram.png';
+import whatsappIcon from '../assets/whatsapp.png';
 
 const Footer = () => {
     return (
@@ -6,9 +9,24 @@ const Footer = () => {
             <div style={styles.container}>
                 <div style={styles.column}>
                     <h3>تواصل معنا</h3>
-                    <p>admin@nexttshop.com</p>
-                    <p>00201009509991</p>
-                    <p>16284</p>
+                    <p style={styles.contactItem}>
+                        <span style={styles.icon}>📞</span>
+                        <span>01152288233</span>
+                    </p>
+                    <p style={styles.contactItem}>admin@nexttshop.com</p>
+                    <p style={styles.contactItem}>16284</p>
+
+                    <div style={styles.socialIcons}>
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                            <img src={facebookIcon} alt="Facebook" style={styles.socialIcon} />
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                            <img src={instagramIcon} alt="Instagram" style={styles.socialIcon} />
+                        </a>
+                        <a href="https://wa.me/201152288233" target="_blank" rel="noopener noreferrer">
+                            <img src={whatsappIcon} alt="WhatsApp" style={styles.socialIcon} />
+                        </a>
+                    </div>
                 </div>
                 <div style={styles.column}>
                     <h3>روابط هامة</h3>
@@ -62,7 +80,24 @@ const styles = {
     column: {
         display: 'flex',
         flexDirection: 'column',
+        gap: '1rem',
+    },
+    contactItem: {
+        display: 'flex',
+        alignItems: 'center',
         gap: '0.5rem',
+        margin: '0.2rem 0',
+    },
+    socialIcons: {
+        display: 'flex',
+        gap: '1rem',
+        marginTop: '1rem',
+    },
+    socialIcon: {
+        width: '30px',
+        height: '30px',
+        borderRadius: '50%', // Optional: makes icons circular if they aren't already
+        transition: 'transform 0.2s',
     },
     list: {
         listStyle: 'none',
