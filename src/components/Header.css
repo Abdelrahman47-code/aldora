@@ -259,6 +259,15 @@
     object-fit: contain;
 }
 
+@media (max-width: 768px) {
+    .logo-img {
+        height: 28px;
+        /* Smaller logo for mobile */
+        margin: 0 10px;
+        /* Add margin to separate from icons */
+    }
+}
+
 
 
 .icon-btn {
