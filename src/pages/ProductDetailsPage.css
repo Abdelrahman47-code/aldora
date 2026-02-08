@@ -155,6 +155,10 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+    .product-container {
+        padding: 1rem;
+    }
+
     .details-section {
         grid-template-columns: 1fr;
         gap: 2rem;

@@ -230,3 +230,22 @@
 .icon-btn:hover {
     color: var(--color-secondary);
 }
+
+@media (max-width: 768px) {
+    .icons {
+        font-size: 1rem;
+        gap: 10px;
+    }
+
+    .icon-btn {
+        font-size: 1rem;
+    }
+
+    .cart-badge {
+        width: 16px;
+        height: 16px;
+        font-size: 0.7rem;
+        top: -6px;
+        right: -6px;
+    }
+}
