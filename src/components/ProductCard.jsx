@@ -1,7 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const ProductCard = ({ product }) => {
+    const { addToCart } = useCart();
+
+    const handleAddToCart = (e) => {
+        e.preventDefault();
+        addToCart(product);
+        // Optional: Replace with a toast notification later
+        alert(`تم إضافة ${product.name} إلى السلة`);
+    };
+
     return (
         <div style={styles.card}>
             <Link to={`/product/${product.id}`} style={styles.link}>
@@ -15,10 +25,7 @@ const ProductCard = ({ product }) => {
                 <div style={styles.info}>
                     <h3 style={styles.name}>{product.name}</h3>
                     <p style={styles.price}>{product.price} ج.م</p>
-                    <button style={styles.addButton} onClick={(e) => {
-                        e.preventDefault();
-                        alert('تمت الإضافة للسلة');
-                    }}>أضف إلى السلة</button>
+                    <button style={styles.addButton} onClick={handleAddToCart}>أضف إلى السلة</button>
                 </div>
             </Link>
         </div>
