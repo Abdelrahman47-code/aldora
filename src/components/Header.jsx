@@ -15,7 +15,14 @@ const Header = () => {
     return (
         <header className="header">
             <div className="top-bar">
-                <span>خصومات هائلة لفترة محدودة!</span>
+                <div className="contact-info">
+                    <span className="phone">📞 01152288233</span>
+                    <div className="social-icons">
+                        <a href="#" className="social-link">FB</a>
+                        <a href="#" className="social-link">IG</a>
+                        <a href="https://wa.me/201152288233" className="social-link">WA</a>
+                    </div>
+                </div>
             </div>
             <div className="nav-container">
                 <Link to="/" className="logo-link">
