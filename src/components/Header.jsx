@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './Header.css';
-import logo from '../assets/logo.png'; // Assuming user will place image here
+import logo from '../assets/logo-aldora.png';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
