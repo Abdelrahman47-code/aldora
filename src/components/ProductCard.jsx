@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useFavorites } from '../context/FavoritesContext';
 import QuickViewModal from './QuickViewModal';
+import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
     const { addToCart } = useCart();
@@ -35,6 +36,7 @@ const ProductCard = ({ product }) => {
     return (
         <>
             <div
+                className="product-card-wrapper"
                 style={{
                     ...styles.card,
                     transform: isHovered ? 'translateY(-5px)' : 'none',
@@ -56,11 +58,10 @@ const ProductCard = ({ product }) => {
                         {product.badge && <span style={styles.badge}>{product.badge}</span>}
 
                         {/* Hover Overlay with Buttons */}
-                        <div style={{
-                            ...styles.overlay,
-                            opacity: isHovered ? 1 : 0,
-                            transform: isHovered ? 'translateY(0)' : 'translateY(10px)'
-                        }}>
+                        <div
+                            className="product-card-overlay"
+                            style={styles.overlay}
+                        >
                             <button
                                 style={styles.actionButton}
                                 onClick={handleToggleFavorite}

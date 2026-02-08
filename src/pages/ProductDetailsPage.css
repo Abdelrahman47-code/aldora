@@ -183,7 +183,6 @@
     .product-container {
         padding: 1rem;
         overflow-x: hidden;
-        /* Prevent horizontal scroll */
         width: 100%;
         box-sizing: border-box;
     }
@@ -194,17 +193,40 @@
     }
 
     .main-image-container {
-        height: 300px;
+        height: auto;
+        max-height: 350px;
         width: 100%;
-        /* Ensure it fits container */
+        max-width: 400px;
+        /* Restrict width */
+        margin: 0 auto;
+        /* Center it */
+    }
+
+    .thumbnails {
+        justify-content: center;
+        /* Center thumbnails */
     }
 
     .product-title {
         font-size: 1.5rem;
+        text-align: center;
+        /* Center title on mobile */
+    }
+
+    .product-info {
+        align-items: center;
+        /* Center info */
+    }
+
+    .price-container {
+        justify-content: center;
     }
 
     .actions {
         flex-direction: column;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
     }
 
     .add-to-cart-btn,
@@ -213,18 +235,20 @@
     }
 
     .similar-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        /* Reduce min width for smaller screens */
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        /* Smaller cards for mobile (2 per row) */
+        gap: 1rem;
     }
 }
 
 @media (max-width: 480px) {
     .similar-grid {
-        grid-template-columns: 1fr;
-        /* Single column on very small screens */
+        grid-template-columns: repeat(2, 1fr);
+        /* Force 2 columns */
+        gap: 10px;
     }
 
     .main-image-container {
-        height: 250px;
+        max-height: 280px;
     }
 }

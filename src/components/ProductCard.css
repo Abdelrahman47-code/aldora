@@ -1,0 +1,21 @@
+.product-card-overlay {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s;
+}
+
+/* On Desktop: Show on hover */
+@media (min-width: 769px) {
+    .product-card-wrapper:hover .product-card-overlay {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* On Mobile: Always show */
+@media (max-width: 768px) {
+    .product-card-overlay {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+}
