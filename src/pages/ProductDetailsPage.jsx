@@ -29,6 +29,8 @@ const ProductDetailsPage = () => {
 
     if (!product) return <div style={{ padding: '2rem', textAlign: 'center' }}>المنتج غير موجود</div>;
 
+    const discountPercentage = product.oldPrice ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100) : 0;
+
     const handleAddToCart = () => {
         addToCart(product);
         alert('تمت الإضافة للسلة بنجاح');
@@ -54,6 +56,11 @@ const ProductDetailsPage = () => {
                 <div className="gallery">
                     <div className="main-image-container">
                         <img src={activeImage} alt={product.name} className="main-image" />
+                        {discountPercentage > 0 && (
+                            <div className="discount-badge-large">
+                                {discountPercentage}%-
+                            </div>
+                        )}
                     </div>
                     <div className="thumbnails">
                         {extraImages.map((img, index) => (
@@ -73,6 +80,7 @@ const ProductDetailsPage = () => {
                     <h1 className="product-title">{product.name}</h1>
                     <div className="price-container">
                         <span className="price">{product.price} ج.م</span>
+                        {product.oldPrice && <span className="old-price">{product.oldPrice} ج.م</span>}
                         {product.badge && <span className="badge">{product.badge}</span>}
                     </div>
 

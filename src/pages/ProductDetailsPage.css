@@ -153,6 +153,29 @@
     gap: 2rem;
 }
 
+.old-price {
+    font-size: 1.2rem;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.discount-badge-large {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #1a237e;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    z-index: 2;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .product-container {

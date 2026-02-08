@@ -12,11 +12,20 @@ const ProductCard = ({ product }) => {
         alert(`تم إضافة ${product.name} إلى السلة`);
     };
 
+    const discountPercentage = product.oldPrice ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100) : 0;
+
     return (
         <div style={styles.card}>
             <Link to={`/product/${product.id}`} style={styles.link}>
                 <div style={styles.imageContainer}>
                     <img src={product.image} alt={product.name} style={styles.image} />
+
+                    {discountPercentage > 0 && (
+                        <div style={styles.discountBadge}>
+                            {discountPercentage}%-
+                        </div>
+                    )}
+
                     {product.badge && <span style={styles.badge}>{product.badge}</span>}
                     <div style={styles.overlay}>
                         <button style={styles.quickViewButton}>عرض سريع</button>
@@ -24,7 +33,10 @@ const ProductCard = ({ product }) => {
                 </div>
                 <div style={styles.info}>
                     <h3 style={styles.name}>{product.name}</h3>
-                    <p style={styles.price}>{product.price} ج.م</p>
+                    <div style={styles.priceContainer}>
+                        <span style={styles.price}>{product.price} ج.م</span>
+                        {product.oldPrice && <span style={styles.oldPrice}>{product.oldPrice} ج.م</span>}
+                    </div>
                     <button style={styles.addButton} onClick={handleAddToCart}>أضف إلى السلة</button>
                 </div>
             </Link>
@@ -69,6 +81,23 @@ const styles = {
         borderRadius: '4px',
         fontSize: '0.8rem',
         fontWeight: 'bold',
+        zIndex: 1,
+    },
+    discountBadge: {
+        position: 'absolute',
+        top: '10px',
+        left: '10px',
+        backgroundColor: '#1a237e', // Dark blue like image
+        color: '#fff',
+        width: '50px',
+        height: '50px',
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontWeight: 'bold',
+        fontSize: '1rem',
+        zIndex: 2,
     },
     overlay: {
         position: 'absolute',
@@ -104,11 +133,22 @@ const styles = {
         color: '#333',
         lineHeight: '1.4',
     },
+    priceContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '10px',
+        margin: '0 0 1rem 0',
+    },
     price: {
         fontSize: '1.2rem',
         fontWeight: 'bold',
-        color: '#1a1a1a',
-        margin: '0 0 1rem 0',
+        color: '#f4b400', // Highlight color
+    },
+    oldPrice: {
+        fontSize: '1rem',
+        color: '#999',
+        textDecoration: 'line-through',
     },
     addButton: {
         backgroundColor: '#000',
