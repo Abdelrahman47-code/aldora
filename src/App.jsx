@@ -4,26 +4,27 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import CartPage from './pages/CartPage';
-import CheckoutPage from './pages/CheckoutPage';
-import { CartProvider } from './context/CartContext';
-import ScrollToTop from './components/ScrollToTop';
+import FavoritesPage from './pages/FavoritesPage';
 
 function App() {
     return (
         <CartProvider>
-            <Router>
-                <ScrollToTop />
-                <div style={styles.app}>
-                    <Header />
-                    <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/product/:id" element={<ProductDetailsPage />} />
-                        <Route path="/cart" element={<CartPage />} />
-                        <Route path="/checkout" element={<CheckoutPage />} />
-                    </Routes>
-                    <Footer />
-                </div>
-            </Router>
+            <FavoritesProvider>
+                <Router>
+                    <ScrollToTop />
+                    <div style={styles.app}>
+                        <Header />
+                        <Routes>
+                            <Route path="/" element={<HomePage />} />
+                            <Route path="/product/:id" element={<ProductDetailsPage />} />
+                            <Route path="/cart" element={<CartPage />} />
+                            <Route path="/checkout" element={<CheckoutPage />} />
+                            <Route path="/favorites" element={<FavoritesPage />} />
+                        </Routes>
+                        <Footer />
+                    </div>
+                </Router>
+            </FavoritesProvider>
         </CartProvider>
     );
 }

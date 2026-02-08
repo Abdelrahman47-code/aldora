@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useFavorites } from '../context/FavoritesContext';
 import './Header.css';
 import logo from '../assets/logo-aldora.png';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { getCartCount } = useCart();
+    const { favorites } = useFavorites();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -36,6 +38,10 @@ const Header = () => {
                     <button className="icon-btn" onClick={() => alert('خاصية البحث ستتوفر قريباً!')} aria-label="Search">
                         🔍
                     </button>
+                    <Link to="/favorites" className="icon favorite-icon" style={{ textDecoration: 'none', position: 'relative', marginRight: '15px' }}>
+                        ❤️
+                        {favorites && favorites.length > 0 && <span className="cart-badge" style={{ backgroundColor: '#D32F2F' }}>{favorites.length}</span>}
+                    </Link>
                     <Link to="/cart" className="icon cart-icon">
                         🛒
                         {getCartCount() > 0 && <span className="cart-badge">{getCartCount()}</span>}

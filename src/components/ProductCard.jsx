@@ -1,46 +1,100 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useFavorites } from '../context/FavoritesContext';
+import QuickViewModal from './QuickViewModal';
 
 const ProductCard = ({ product }) => {
     const { addToCart } = useCart();
+    const { isFavorite, toggleFavorite } = useFavorites();
+    const [isHovered, setIsHovered] = useState(false);
+    const [showQuickView, setShowQuickView] = useState(false);
 
     const handleAddToCart = (e) => {
         e.preventDefault();
+        e.stopPropagation();
         addToCart(product);
         // Optional: Replace with a toast notification later
         alert(`تم إضافة ${product.name} إلى السلة`);
     };
 
+    const handleToggleFavorite = (e) => {
+        e.preventDefault(); // Prevent navigation
+        e.stopPropagation();
+        toggleFavorite(product);
+    };
+
+    const handleQuickView = (e) => {
+        e.preventDefault(); // Prevent navigation
+        e.stopPropagation();
+        setShowQuickView(true);
+    };
+
     const discountPercentage = product.oldPrice ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100) : 0;
 
     return (
-        <div style={styles.card}>
-            <Link to={`/product/${product.id}`} style={styles.link}>
-                <div style={styles.imageContainer}>
-                    <img src={product.image} alt={product.name} style={styles.image} />
+        <>
+            <div
+                style={{
+                    ...styles.card,
+                    transform: isHovered ? 'translateY(-5px)' : 'none',
+                    boxShadow: isHovered ? '0 10px 20px rgba(0,0,0,0.1)' : 'none'
+                }}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+            >
+                <Link to={`/product/${product.id}`} style={styles.link}>
+                    <div style={styles.imageContainer}>
+                        <img src={product.image} alt={product.name} style={styles.image} />
 
-                    {discountPercentage > 0 && (
-                        <div style={styles.discountBadge}>
-                            {discountPercentage}%-
+                        {discountPercentage > 0 && (
+                            <div style={styles.discountBadge}>
+                                {discountPercentage}%-
+                            </div>
+                        )}
+
+                        {product.badge && <span style={styles.badge}>{product.badge}</span>}
+
+                        {/* Hover Overlay with Buttons */}
+                        <div style={{
+                            ...styles.overlay,
+                            opacity: isHovered ? 1 : 0,
+                            transform: isHovered ? 'translateY(0)' : 'translateY(10px)'
+                        }}>
+                            <button
+                                style={styles.actionButton}
+                                onClick={handleToggleFavorite}
+                                title={isFavorite(product.id) ? "إزالة من المفضلة" : "أضف إلى المفضلة"}
+                            >
+                                {isFavorite(product.id) ? '❤️' : '🤍'}
+                            </button>
+                            <button
+                                style={styles.actionButton}
+                                onClick={handleQuickView}
+                                title="عرض سريع"
+                            >
+                                👁️
+                            </button>
                         </div>
-                    )}
+                    </div>
+                    <div style={styles.info}>
+                        <h3 style={styles.name}>{product.name}</h3>
+                        <div style={styles.priceContainer}>
+                            <span style={styles.price}>{product.price} ج.م</span>
+                            {product.oldPrice && <span style={styles.oldPrice}>{product.oldPrice} ج.م</span>}
+                        </div>
+                        <button style={styles.addButton} onClick={handleAddToCart}>أضف إلى السلة</button>
+                    </div>
+                </Link>
+            </div>
 
-                    {product.badge && <span style={styles.badge}>{product.badge}</span>}
-                    <div style={styles.overlay}>
-                        <button style={styles.quickViewButton}>عرض سريع</button>
-                    </div>
-                </div>
-                <div style={styles.info}>
-                    <h3 style={styles.name}>{product.name}</h3>
-                    <div style={styles.priceContainer}>
-                        <span style={styles.price}>{product.price} ج.م</span>
-                        {product.oldPrice && <span style={styles.oldPrice}>{product.oldPrice} ج.م</span>}
-                    </div>
-                    <button style={styles.addButton} onClick={handleAddToCart}>أضف إلى السلة</button>
-                </div>
-            </Link>
-        </div>
+            {showQuickView && (
+                <QuickViewModal
+                    product={product}
+                    onClose={() => setShowQuickView(false)}
+                />
+            )}
+        </>
     );
 };
 
@@ -50,9 +104,10 @@ const styles = {
         border: '1px solid #eee',
         borderRadius: '8px',
         overflow: 'hidden',
-        transition: 'transform 0.2s',
+        transition: 'all 0.3s',
         display: 'flex',
         flexDirection: 'column',
+        position: 'relative',
     },
     link: {
         textDecoration: 'none',
@@ -65,11 +120,13 @@ const styles = {
         position: 'relative',
         height: '250px',
         backgroundColor: '#f9f9f9',
+        overflow: 'hidden',
     },
     image: {
         width: '100%',
         height: '100%',
         objectFit: 'cover',
+        transition: 'transform 0.5s',
     },
     badge: {
         position: 'absolute',
@@ -106,18 +163,23 @@ const styles = {
         right: '0',
         display: 'flex',
         justifyContent: 'center',
-        opacity: 0,
-        transform: 'translateY(10px)',
+        gap: '10px',
         transition: 'all 0.3s',
+        zIndex: 3,
     },
-    quickViewButton: {
-        backgroundColor: 'rgba(255,255,255,0.9)',
+    actionButton: {
+        backgroundColor: '#fff',
         border: 'none',
-        padding: '8px 16px',
+        width: '40px',
+        height: '40px',
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         cursor: 'pointer',
-        borderRadius: '20px',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-        fontWeight: '600',
+        boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
+        fontSize: '1.2rem',
+        transition: 'background-color 0.2s, transform 0.2s',
     },
     info: {
         padding: '1rem',
