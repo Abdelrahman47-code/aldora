@@ -182,7 +182,6 @@
 @media (max-width: 768px) {
     .product-container {
         padding: 1rem;
-        overflow-x: hidden;
         width: 100%;
         box-sizing: border-box;
     }
@@ -192,41 +191,57 @@
         gap: 2rem;
     }
 
-    .main-image-container {
-        height: auto;
-        max-height: 350px;
+    /* Main Image Centering & Width Control */
+    .gallery {
+        align-items: center;
+        /* Center children flex items (like thumbnails) */
         width: 100%;
-        max-width: 400px;
-        /* Restrict width */
-        margin: 0 auto;
-        /* Center it */
     }
 
+    .main-image-container {
+        height: auto;
+        max-height: 300px;
+        /* Reduced from 350px */
+        width: 100%;
+        max-width: 300px;
+        /* Reduced from 350px */
+        /* Further reduced width */
+        margin: 0 auto;
+    }
+
+    /* Thumbnails Centering & Width Control */
     .thumbnails {
         justify-content: center;
-        /* Center thumbnails */
+        width: 100%;
+        max-width: 300px;
+        /* Match main image width */
+        margin: 10px auto 0;
+        /* Center horizontally with margin */
+        flex-wrap: wrap;
+        /* Allow wrapping if needed, though scroll is originally used */
     }
 
     .product-title {
         font-size: 1.5rem;
         text-align: center;
-        /* Center title on mobile */
     }
 
     .product-info {
         align-items: center;
-        /* Center info */
     }
 
     .price-container {
         justify-content: center;
     }
 
+    /* Actions (Buttons) Centering & Width Control */
     .actions {
         flex-direction: column;
         width: 100%;
-        max-width: 400px;
+        max-width: 300px;
+        /* Match image width */
         margin: 0 auto;
+        gap: 15px;
     }
 
     .add-to-cart-btn,
@@ -234,21 +249,41 @@
         width: 100%;
     }
 
+    .description {
+        text-align: center;
+        /* Center description text */
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .features {
+        display: inline-block;
+        /* Helps with centering list */
+        text-align: right;
+        /* Keep list list items right aligned for Arabic */
+        margin: 1rem auto;
+        padding-right: 2rem;
+        /* Ensure bullets are visible */
+    }
+
     .similar-grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        /* Smaller cards for mobile (2 per row) */
-        gap: 1rem;
+        grid-template-columns: repeat(2, 1fr);
+        /* Force 2 columns on mobile */
+        gap: 10px;
     }
 }
 
 @media (max-width: 480px) {
-    .similar-grid {
-        grid-template-columns: repeat(2, 1fr);
-        /* Force 2 columns */
-        gap: 10px;
+
+    .main-image-container,
+    .thumbnails,
+    .actions {
+        max-width: 280px;
+        /* Even smaller for very small screens */
     }
 
     .main-image-container {
-        max-height: 280px;
+        max-height: 300px;
     }
 }
