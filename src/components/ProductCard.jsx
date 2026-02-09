@@ -5,7 +5,7 @@ import { useFavorites } from '../context/FavoritesContext';
 import QuickViewModal from './QuickViewModal';
 import './ProductCard.css';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, showRemoveIcon = false }) => {
     const { addToCart } = useCart();
     const { isFavorite, toggleFavorite } = useFavorites();
     const [isHovered, setIsHovered] = useState(false);
@@ -65,9 +65,9 @@ const ProductCard = ({ product }) => {
                             <button
                                 style={styles.actionButton}
                                 onClick={handleToggleFavorite}
-                                title={isFavorite(product.id) ? "إزالة من المفضلة" : "أضف إلى المفضلة"}
+                                title={showRemoveIcon ? "إزالة من المفضلة" : (isFavorite(product.id) ? "إزالة من المفضلة" : "أضف إلى المفضلة")}
                             >
-                                {isFavorite(product.id) ? '❤️' : '🤍'}
+                                {showRemoveIcon ? '🗑️' : (isFavorite(product.id) ? '❤️' : '🤍')}
                             </button>
                             <button
                                 style={styles.actionButton}

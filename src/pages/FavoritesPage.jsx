@@ -20,7 +20,7 @@ const FavoritesPage = () => {
             <h1 style={styles.title}>المفضلة</h1>
             <div style={styles.grid}>
                 {favorites.map(product => (
-                    <ProductCard key={product.id} product={product} />
+                    <ProductCard key={product.id} product={product} showRemoveIcon={true} />
                 ))}
             </div>
         </div>
