@@ -133,6 +133,11 @@
     transition: all 0.3s ease;
 }
 
+/* Utilities for Desktop/Mobile visibility */
+.mobile-only {
+    display: none;
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
     .nav-container {
@@ -225,10 +230,8 @@
     }
 }
 
-/* Utilities for Desktop/Mobile visibility */
-.mobile-only {
-    display: none;
-}
+
+/* Utilities for Desktop/Mobile visibility moved to top */
 
 @media (min-width: 769px) {
     .desktop-only {

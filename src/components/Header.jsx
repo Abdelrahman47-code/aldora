@@ -29,14 +29,16 @@ const Header = () => {
 
                 <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
                     <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>الرئيسية</Link>
+
+                    <Link to="/favorites" className="nav-link mobile-only" onClick={() => setIsMenuOpen(false)}>
+                        المفضلة ❤️
+                    </Link>
+
                     <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>المراتب</Link>
                     <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>المفروشات</Link>
                     <a href="#footer" className="nav-link" onClick={() => setIsMenuOpen(false)}>اتصل بنا</a>
 
                     {/* Mobile Only Menu Items */}
-                    <Link to="/favorites" className="nav-link mobile-only" onClick={() => setIsMenuOpen(false)}>
-                        قائمة الرغبات ❤️
-                    </Link>
                     <div className="nav-link mobile-only" onClick={() => { setIsMenuOpen(false); alert('تسجيل الدخول سيتوفر قريباً!'); }}>
                         تسجيل الدخول / التسجيل 👤
                     </div>
